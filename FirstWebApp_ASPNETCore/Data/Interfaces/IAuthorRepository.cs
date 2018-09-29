@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FirstWebApp_ASPNETCore.Models.Interfaces
+namespace FirstWebApp_ASPNETCore.Data
 {
     public interface IAuthorRepository : IRepository<Author>
     {

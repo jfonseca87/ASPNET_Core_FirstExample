@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FirstWebApp_ASPNETCore.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstWebApp_ASPNETCore
@@ -15,6 +12,14 @@ namespace FirstWebApp_ASPNETCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //DBContext configuration
+            services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("LibraryDB"));
+
+            //Dependency injection container
+            services.AddSingleton<IAuthorRepository, AuthorRepository>();
+            services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddSingleton<ICustomerRepository, CustomerRepository>();
+
             services.AddMvc();
         }
 
