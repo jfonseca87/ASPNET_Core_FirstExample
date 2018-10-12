@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FirstWebApp_ASPNETCore.Data.CustomerViewModel>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Customers</h2>
+
+<div>
+    <a class="btn btn-success" asp-controller="Customer" asp-action="Create">
+        <i class="fa fa-plus-circle"></i>
+        New Customer
+    </a>
+</div>
+<br />
+<div>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Name </th>
+                <th> Borrowed Books Count </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Customer.CustomerId</td>
+                    <td>@item.Customer.Name</td>
+                    <td>@item.BookCount</td>
+                    <td>
+                        <a class="btn btn-warning" title="Update Book" asp-controller="Customer" asp-action="Update" asp-route-id="@item.Customer.CustomerId"> <i class="fa fa-edit"></i> </a>
+                        <a class="btn btn-danger" title="Delete Book" asp-controller="Customer" asp-action="Delete" asp-route-id="@item.Customer.CustomerId"> <i class="fa fa-trash-o"></i> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+

@@ -7,3 +7,5 @@
 /FirstWebApp_ASPNETCore/obj
 /.vs/FirstWebApp_ASPNETCore/v15
 /.vs/FirstWebApp_ASPNETCore/DesignTimeBuild
+/.vs/config
+/FirstWebApp_ASPNETCore/bin/Debug/netcoreapp2.1

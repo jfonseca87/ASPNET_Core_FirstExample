@@ -1,4 +1,5 @@
 ﻿using FirstWebApp_ASPNETCore.Data;
+using FirstWebApp_ASPNETCore.Data.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,9 @@ namespace FirstWebApp_ASPNETCore
             services.AddDbContext<LibraryContext>(options => options.UseInMemoryDatabase("LibraryDB"));
 
             //Dependency injection container
-            services.AddSingleton<IAuthorRepository, AuthorRepository>();
-            services.AddSingleton<IBookRepository, BookRepository>();
-            services.AddSingleton<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
 
             services.AddMvc();
         }
@@ -39,6 +40,8 @@ namespace FirstWebApp_ASPNETCore
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedDBInitialize.SeedDB(app);
         }
 }
 }
